@@ -163,7 +163,7 @@ borrowers of all emplyment status groups. The interesting part is that the
 for as a whole different state. 
 
 
-```{r}
+```{r, echo=FALSE}
 
 grid.arrange(ggplot(aes(x=LoanOriginalAmount),
                     data = csv_file.reassesedEmp)+
@@ -182,7 +182,7 @@ outliers a right tailed destribution can be perceived, where the majority of
 loan values sit at the lower dollar-value end.
 
 
-```{r}
+```{r, echo=FALSE}
 
 qplot(CreditScoreRangeLower, bins = 35, data =
         csv_file.reassesedEmp)+
@@ -197,7 +197,7 @@ nice to see that the bulk of the scores sit in between 625~750, which can be
 considered fair to excellent. 
 
 
-```{r}
+```{r, echo=FALSE}
 
 qplot(CreditScoreRangeUpper, bins = 35, data =
         csv_file.reassesedEmp)+
@@ -212,7 +212,7 @@ range, this time peeking towards the higher scores It's nice to see such a
 healthy consistency among loaners' scores. 
 
 
-```{r}
+```{r, echo=FALSE}
 
 qplot(CreditScoreRange, bins = 35, data =
         csv_file.reassesedEmp)+
@@ -230,7 +230,7 @@ banks coaching or guiding soon-to-be borrower to answer their questionaires to
 be more likely to be approved)
 
 
-```{r}
+```{r, echo=FALSE}
 
 qplot(BorrowerState, data =
         csv_file.reassesedEmp)+
@@ -246,7 +246,7 @@ the more people to ask for loans there are, with California taking the lead on
 this one by over twice the amount of loans of the next state in line, Texas.
 
 
-```{r}
+```{r, echo=FALSE}
 
 qplot(Occupation, data =
         csv_file.reassesedEmp)+
@@ -265,7 +265,7 @@ third place we programmers. Not surprising since we are currently living in the
 information era.
 
 
-```{r}
+```{r, echo=FALSE}
 
 qplot(LoanStatus, data =
         csv_file.reassesedEmp)+
@@ -399,7 +399,7 @@ then it is surprising that they dominate the over this loan status categories,
 given that such categories imply an income with which a loan is payed.
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggplot(aes(x=LoanStatus,
            fill=factor(EmploymentStatus)),
@@ -420,7 +420,7 @@ emplyment status accross loan status are eerily similar; with the exception of
 full-time employed borrowers being relatively smaller in this instance.
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggplot(aes(x=LoanStatus,
            fill=factor(EmploymentStatus)),
@@ -445,7 +445,7 @@ The next couple of graphs are too similar to these past ones therefore there is
 not a lot of new information we could extract from them:
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggplot(aes(x=LoanStatus,
            fill=factor(EmploymentStatus)),
@@ -460,7 +460,7 @@ summary(subset(csv_file.reassesedEmp$EmploymentStatus,
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggplot(aes(x=LoanStatus,
            fill=factor(EmploymentStatus)),
@@ -476,7 +476,7 @@ summary(subset(csv_file.reassesedEmp$EmploymentStatus,
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggplot(aes(x=LoanStatus,
            fill=factor(EmploymentStatus)),
@@ -497,7 +497,7 @@ here. Even thou they are small in quantity compared to previous loan status
 categories, it is still concerning that they are present at all.
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggplot(aes(x=LoanStatus,
            fill=factor(EmploymentStatus)),
@@ -522,7 +522,7 @@ time. Here we did not use all of the variables that we graphed previously since
 some of these variable are continuos, integer data.
 
 
-```{r}
+```{r, echo=FALSE}
 
 a <-sort(table(csv_file.reassesedEmp$BorrowerState),decreasing=TRUE)[1:10]
 
@@ -579,7 +579,7 @@ visually complex graphing tool. Here, we better compare different loan statuses
 side by side in terms of different employment stauses.
 
 
-```{r}
+```{r, echo=FALSE}
 
 qplot(LoanOriginalAmount,
       fill = LoanStatus,
@@ -607,7 +607,7 @@ for "Cancelled", hang at the top of the spectrum with greater original amount
 values.
 
 
-```{r}
+```{r, echo=FALSE}
 
 qplot(CreditScoreRangeLower, fill = LoanStatus, bins = 35, data =
         csv_file.reassesedEmp)+
@@ -629,7 +629,7 @@ two categorie, being on the lower side made someone more likely to get a loan,
 according to this info.
 
 
-```{r}
+```{r, echo=FALSE}
 
 qplot(CreditScoreRangeUpper, fill = LoanStatus, bins = 35, data =
         csv_file.reassesedEmp)+
@@ -647,7 +647,7 @@ in mind as we look for more signs that may point towards fraud as a possible
 variable.
 
 
-```{r}
+```{r, echo=FALSE}
 
 qplot(CreditScoreRange, fill = LoanStatus, bins = 35, data =
         csv_file.reassesedEmp)+
@@ -727,7 +727,7 @@ or have defaulted on their loans then we will go ahead and limit our data set to
 borrowers who fall under these categories.
 
 
-```{r}
+```{r, echo=FALSE}
 
 csv_file.reassesedLS <- 
   csv_file.reassesedEmp[which(
@@ -748,7 +748,7 @@ Let's make sure that only those levels of LoanStatus we are interested in
 have trickle down into our new dataset
 
 
-```{r}
+```{r, echo=FALSE}
 
 unique(csv_file.reassesedLS$LoanStatus)
 
@@ -767,7 +767,7 @@ Let's reassess our data set again to narrow it down to those employed borrowers
 that fall under this Loan statuses.
 
 
-```{r}
+```{r, echo=FALSE}
 
 csv_file.reassesedLSandEmp <- subset(csv_file.reassesedLS,
                                      csv_file.reassesedLS$EmploymentStatus ==
@@ -787,7 +787,7 @@ according to any given categorical variable that fall under 'Defaulted' and all
 Let's reorganize our variables for a better visualization of our data:
 
 
-```{r}
+```{r, echo=FALSE}
 
 csv_file.drops <- csv_file.reassesedLSandEmp[,c("LoanStatus",
                                                 "IncomeRange",
@@ -822,7 +822,7 @@ are comparing "LoanStatus" against the rest of the variables in separate chunks
 for better visualization.
 
 
-```{r}
+```{r, echo=FALSE}
 
 drops <- c('Term',
            'ListingKey',
@@ -846,7 +846,7 @@ This graph is too dense to be able to see it clearly. Let's divide this group of
 graphs into multiple for a better look at the graphed data.
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggduo(csv_file.drops, 1, 2)+
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
@@ -863,7 +863,7 @@ is a very small subset of our data). Given this, we can better the similarities
 between faulty loan status through in terms of this new variable.
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggduo(csv_file.drops, 1, 3)+
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
@@ -877,7 +877,7 @@ summary(csv_file.drops$EmploymentStatusDuration)
 differnt loan status categories have in common, with minor variations.
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggduo(csv_file.drops, 1, 4)+
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
@@ -893,7 +893,7 @@ borrowers, per loan status category is centers towards the lower side of the
 20 open credit lines at the time of loan acceptance.
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggduo(csv_file.drops, 1, 5)+
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
@@ -909,7 +909,7 @@ Specially since delinquencies sound like they could be an important factor to
 take into account when considering accepting a borrower's loan request.
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggduo(csv_file.drops, 1, 7)+
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
@@ -923,7 +923,7 @@ We previously noted this odd coincidence. This an important fact to keep in mind
 for later when the in our multivariate analysis and reflection
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggduo(csv_file.drops, 1, 8)+
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
@@ -938,7 +938,7 @@ graph. It seems as employed borrowers belonging to the different, faulty loan
 status categories share very similar low-credit-score ranges. 
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggduo(csv_file.drops, 1, 9)+
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
@@ -953,7 +953,7 @@ vary by +/-19 point or none, it only makes sense that this graph is the same
 as previous where most values were just increased by 19 points 
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggduo(csv_file.drops, 1, 10)+
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
@@ -969,7 +969,7 @@ seems counterintuitive in my opinion. Shouldn't someone with these many open
 lines of credit be considered a liability?
  
 
-```{r}
+```{r, echo=FALSE}
 
 ggduo(csv_file.drops, 1, 11)+
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
@@ -979,7 +979,7 @@ summary(csv_file.drops$TotalTrades)
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggduo(csv_file.drops, 1, 12)+
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
@@ -988,7 +988,7 @@ summary(csv_file.drops$CurrentDelinquencies)
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggduo(csv_file.drops, 1, 13)+
   theme(axis.text.x=element_text(angle=45,vjust=1,hjust=1))
@@ -1001,7 +1001,7 @@ summary(csv_file.drops$TradesOpenedLast6Months)
 Furthermore, we can better describe the graphed ranges of each:
 
 
-```{r}
+```{r, echo=FALSE}
 
 csv_file.drops <- csv_file.reassesedLSandEmp[,c("LoanStatus",
                   "IncomeRange",
@@ -1035,7 +1035,7 @@ Here we will graph 3 varibles at once, controlling for employment status
 and loan status. We will also graph linear models.
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggplot(aes(x = DelinquenciesLast7Years,
            y = OpenCreditLines,
@@ -1057,7 +1057,7 @@ per borrower the lower the amount of Credit Lines these were granted, accross
 all faulty loan statuses.
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggplot(aes(x = DelinquenciesLast7Years,
            y = StatedMonthlyIncome,
@@ -1078,7 +1078,7 @@ Here, there almost seems to be no relation among "StatedMonthIncome" and
 "DelinqueciesLast7Years" regardless of faulty loan status by employed borrowers.
 
 
-```{r}
+```{r, echo=FALSE}
 
 ggplot(aes(x = StatedMonthlyIncome,
            y = LoanOriginalAmount,
@@ -1264,7 +1264,7 @@ Everything below this point was part of all roughs drafts I previously made. I
 kept all of this here in case it would come in handy later on, not just the code
 but the ideas as well.
 
-```{r}
+```{r, echo=FALSE}
 
 ggplot(aes(x = BorrowerState, y = LoanOriginalAmount), data = 
          csv_file.reassesedLSandEmp)+
@@ -1282,7 +1282,7 @@ ggplot(aes(x = Occupation, y = LoanOriginalAmount), data =
 
 ###CreditScoreRangeLower with categorical variable variations
 
-```{r}
+```{r, echo=FALSE}
 
 ## CreditScoreRangeLower vs BorrowerStates 
 ggplot(aes(x = BorrowerState, y = CreditScoreRangeLower), data = 
@@ -1317,7 +1317,7 @@ college freshmen/junior/Sophomore are amongst those with the lowest spread.
 ###CreditScoreRangeUpper with categorical variable variations
 
 
-```{r}
+```{r, echo=FALSE}
 
 ## CreditScoreRangeUpper vs BorrowerStates 
 ggplot(aes(x = BorrowerState, y = CreditScoreRangeUpper), data = 
@@ -1351,7 +1351,7 @@ only contain the same columns as does csv_file.drops, this will help
 compare our specific subjects of interest againt the larger majority that is not 
 employed AND possess an unfavorable loan status.
 
-```{r}
+```{r, echo=FALSE}
 
 # make csv_file.counterDrops
 
